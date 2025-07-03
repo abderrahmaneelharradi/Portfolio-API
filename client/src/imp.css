@@ -1,0 +1,418 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #333;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #fff;
+}
+
+header .logo {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+}
+
+header nav ul li {
+  margin-left: 30px;
+}
+
+/* Fixed: Added button styles for navigation */
+header nav ul li .btn-link-style {
+  background: none;
+  border: none;
+  text-decoration: none;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+}
+
+header nav ul li .btn-link-style:hover {
+  color: #666;
+}
+
+header .social-icons {
+  display: flex;
+}
+
+/* Fixed: Changed from 'a' to '.btn-icon' to match React buttons */
+header .social-icons .btn-icon {
+  margin-left: 15px;
+  color: #333;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px;
+}
+
+header .social-icons .btn-icon:hover {
+  color: #666;
+}
+
+.hero {
+  background-color: #111;
+  color: #fff;
+  padding: 80px 80px;
+  position: relative;
+  min-height: 400px;
+  /* Add grayscale filter for black and white effect */
+  filter: grayscale(100%);
+}
+
+/* Alternative: Create a specific class for grayscale effect */
+.hero-grayscale {
+  filter: grayscale(100%) contrast(1.2) brightness(0.8);
+}
+
+/* For a more dramatic black and white effect */
+.hero-dramatic {
+  filter: grayscale(100%) contrast(1.5) brightness(0.7);
+}
+
+/* For a softer black and white effect */
+.hero-soft {
+  filter: grayscale(80%) contrast(1.1) brightness(0.9);
+}
+
+/* COMPLETELY REMOVED ALL BACKGROUND IMAGE REFERENCES */
+
+/* COMPLETELY REMOVED THE ::before PSEUDO-ELEMENT */
+
+.hero .hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero .hero-content h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.hero .hero-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.hero .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+  background-color: #fff;
+  color: #111;
+}
+
+.about {
+  padding: 80px 50px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.about .section-title {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.about .about-content {
+  flex: 1;
+}
+
+.about .about-content p {
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.about .download-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333;
+  margin-left: 41%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.about .download-btn:hover {
+  background-color: #555;
+}
+
+.skills {
+  padding: 80px 50px;
+  background-color: #333;
+  color: #fff;
+}
+
+.skills .skills-title {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.skills .skills-description {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.skills .skills-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.skills .skills-container .focus-areas {
+  width: 30%;
+}
+
+.skills .skills-container .focus-areas .focus-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.skills .skills-container .focus-areas .focus-list {
+  list-style: none;
+}
+
+.skills .skills-container .focus-areas .focus-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #444;
+  text-align: center;
+}
+
+.skills .skills-container .skill-bars {
+  width: 65%;
+}
+
+.skills .skills-container .skill-bars .skill {
+  margin-bottom: 8px;
+  position: relative;
+  height: 30px;
+  display: flex;
+}
+
+.skills .skills-container .skill-bars .skill .skill-name {
+  width: 100px;
+  background-color: #b7b7a9;
+  padding: 6px 0;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.skills .skills-container .skill-bars .skill .skill-bar {
+  flex-grow: 1;
+  background-color: #e0e0d5;
+  position: relative;
+  border-left: 1px solid #333;
+}
+
+.skills .skills-container .skill-bars .skill .skill-bar .skill-level {
+  height: 100%;
+  background-color: #e0e0d5;
+}
+
+.skills .skills-container .skill-bars .skill .skill-bar .skill-level::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background-color: #333;
+  left: var(--width);
+}
+
+.skills .skills-container .skill-bars .skill .skill-bar.html .skill-level::after {
+  --width: 90%;
+}
+
+.skills .skills-container .skill-bars .skill .skill-bar.css .skill-level::after {
+  --width: 85%;
+}
+
+.skills .skills-container .skill-bars .skill .skill-bar.javascript .skill-level::after {
+  --width: 80%;
+}
+
+.skills .skills-container .skill-bars .skill .skill-bar.react .skill-level::after {
+  --width: 75%;
+}
+
+.skills .skills-container .skill-bars .skill .skill-bar.photoshop .skill-level::after {
+  --width: 85%;
+}
+
+.skills .skills-container .skill-bars .skill .skill-bar.adobe-xd .skill-level::after {
+  --width: 80%;
+}
+
+.skills .skills-container .skill-bars .skill .skill-bar.nodejs .skill-level::after {
+  --width: 70%;
+}
+
+.skills .skills-container .skill-bars .skill .skill-bar.wordpress .skill-level::after {
+  --width: 75%;
+}
+
+.portfolio {
+  padding: 80px 50px;
+  background-color: #fff;
+}
+
+.portfolio .portfolio-title {
+  font-size: 30px;
+  margin-bottom: 50px;
+}
+
+.portfolio .portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.portfolio .portfolio-grid .portfolio-item {
+  position: relative;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #999;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.portfolio .portfolio-grid .portfolio-item:nth-child(odd) {
+  background-color: #555;
+}
+
+.portfolio .portfolio-grid .portfolio-item:hover {
+  transform: translateY(-5px);
+}
+
+.portfolio .portfolio-grid .portfolio-item h3 {
+  text-transform: uppercase;
+  font-size: 16px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.portfolio .portfolio-grid .portfolio-item h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 1px;
+  background-color: #fff;
+}
+
+/* Fixed: Added footer button styles */
+footer .btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px;
+}
+
+footer .social-icons .btn-icon {
+  margin-left: 15px;
+  color: #333;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Additional responsive styles */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  header nav ul {
+    margin: 20px 0;
+  }
+
+  header nav ul li {
+    margin: 0 15px;
+  }
+
+  .hero {
+    padding: 40px 20px;
+  }
+
+  .about,
+  .skills,
+  .portfolio {
+    padding: 40px 20px;
+  }
+
+  .skills .skills-container {
+    flex-direction: column;
+  }
+
+  .skills .skills-container .focus-areas {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .skills .skills-container .skill-bars {
+    width: 100%;
+  }
+
+  .portfolio .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,8 +1,7 @@
-const express = require('express');
-const router = express.Router();
-const contactController = require('../controllers/contactController');
+const express = require("express")
+const router = express.Router()
+const { sendContact } = require("../controllers/contactController")
 
-router.get('/', contactController.getAllContacts); // pour le propriétaire
-router.post('/', contactController.createContact); // pour les visiteurs
+router.post("/", sendContact)
 
-module.exports = router;
+module.exports = router

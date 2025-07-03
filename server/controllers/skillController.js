@@ -1,38 +1,25 @@
-const Skill = require('../models/skill');
-
-exports.getAllSkills = async (req, res) => {
+const getSkills = async (req, res) => {
   try {
-    const skills = await Skill.find();
-    res.json(skills);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+    const skillsData = {
+      description: "Lorem ipsum dolor sit amet...",
+      focusAreas: ["UI/UX Design", "Responsive Design", "Web Design", "Mobile App Design"],
+      technicalSkills: [
+        { name: "HTML", level: 90 },
+        { name: "CSS", level: 85 },
+        { name: "JavaScript", level: 80 },
+        { name: "React", level: 75 },
+        { name: "Photoshop", level: 85 },
+        { name: "Adobe XD", level: 80 },
+        { name: "Node.js", level: 70 },
+        { name: "WordPress", level: 75 },
+      ],
+    }
+    res.json(skillsData)
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch skills data" })
   }
-};
+}
 
-exports.createSkill = async (req, res) => {
-  try {
-    const newSkill = new Skill(req.body);
-    const saved = await newSkill.save();
-    res.status(201).json(saved);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-};
-
-exports.updateSkill = async (req, res) => {
-  try {
-    const updated = await Skill.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.json(updated);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-};
-
-exports.deleteSkill = async (req, res) => {
-  try {
-    await Skill.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Compétence supprimée' });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
+module.exports = {
+  getSkills,
+}

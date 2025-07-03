@@ -1,38 +1,43 @@
-const Project = require('../models/project');
-
-exports.getAllProjects = async (req, res) => {
+// GET /api/projects - Get projects data
+const getProjects = async (req, res) => {
   try {
-    const projects = await Project.find();
-    res.json(projects);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+    const projectsData = [
+      "Web Design",
+      "Mobile Design",
+      "Logo Design",
+      "Web Application Development",
+      "Mobile Application Development",
+      "PWA Development",
+    ]
+    res.json(projectsData)
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch projects data" })
   }
-};
+}
 
-exports.createProject = async (req, res) => {
+// GET /api/projects/:id - Get single project
+const getProject = async (req, res) => {
   try {
-    const newProject = new Project(req.body);
-    const saved = await newProject.save();
-    res.status(201).json(saved);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+    const { id } = req.params
+    // Add your single project fetch logic here
+    res.json({ message: `Project ${id} details` })
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch project" })
   }
-};
+}
 
-exports.updateProject = async (req, res) => {
+// POST /api/projects - Create new project
+const createProject = async (req, res) => {
   try {
-    const updated = await Project.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.json(updated);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+    // Add your project creation logic here
+    res.json({ message: "Project created successfully" })
+  } catch (error) {
+    res.status(500).json({ error: "Failed to create project" })
   }
-};
+}
 
-exports.deleteProject = async (req, res) => {
-  try {
-    await Project.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Projet supprimé' });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
+module.exports = {
+  getProjects,
+  getProject,
+  createProject,
+}

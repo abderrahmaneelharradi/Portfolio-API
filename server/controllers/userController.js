@@ -1,42 +1,32 @@
-const User = require('../models/user');
+const path = require("path")
 
-// Créer un nouvel utilisateur
-exports.createUser = async (req, res) => {
+const getPortfolio = async (req, res) => {
   try {
-    const user = new User(req.body);
-    const saved = await user.save();
-    res.status(201).json(saved);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+    const portfolioData = {
+      name: "Katie Reed",
+      title: "Web Developer & Designer",
+      about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+      email: "infokatie@mail.com",
+      phone: "+01 234 567 88",
+      footerDescription:
+        "Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet...",
+    }
+    res.json(portfolioData)
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch portfolio data" })
   }
-};
+}
 
-// Obtenir tous les utilisateurs
-exports.getUsers = async (req, res) => {
+const downloadResume = async (req, res) => {
   try {
-    const users = await User.find();
-    res.json(users);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+    const resumePath = path.join(__dirname, "../assets/resume.pdf")
+    res.download(resumePath, "Katie_Reed_Resume.pdf")
+  } catch (error) {
+    res.status(500).json({ error: "Failed to download resume" })
   }
-};
+}
 
-// Mettre à jour un utilisateur par ID
-exports.updateUser = async (req, res) => {
-  try {
-    const updated = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.json(updated);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-};
-
-// Supprimer un utilisateur par ID
-exports.deleteUser = async (req, res) => {
-  try {
-    await User.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Utilisateur supprimé' });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
+module.exports = {
+  getPortfolio,
+  downloadResume,
+}
